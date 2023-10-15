@@ -17,4 +17,4 @@
 - [x]	GitHub Project Link
 - [x]	Sample user detail to login
 - [x]	Any comments
-- []	If hosted on Vercel/MS Azure App service/AWS BeanStack/Heroku or any platform share the details with urls
+- [ ]	If hosted on Vercel/MS Azure App service/AWS BeanStack/Heroku or any platform share the details with urls
