@@ -7,7 +7,17 @@ const secretKey = "maharshi.barot@gbc.ca";
 
 app.use(bodyParser.json());
 
-// User Signup
+// User Signup :- http://localhost:27017/api/v1/users/signup
+
+// User details
+
+/* Sample user details
+{
+    "username" : "john doe",
+    "email": "john.doe@example.com",
+    "password": "plain_text_passoword"
+}
+*/
 app.post("/api/v1/users/signup", async (req, res) => {
   try {
     const newUser = await UserModel.create(req.body);
@@ -17,7 +27,14 @@ app.post("/api/v1/users/signup", async (req, res) => {
   }
 });
 
-// User Login
+// User Login :- http://localhost:27017/api/v1/users/login
+
+/* Sample user login Details
+{
+    "username" : "john doe",
+    "password": "plain_text_passoword"
+}
+*/
 app.post("/api/v1/users/login", async (req, res) => {
   try {
     const user = await UserModel.findOne({ username: req.body.username });

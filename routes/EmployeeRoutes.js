@@ -5,7 +5,8 @@ const app = express();
 
 app.use(bodyParser.json());
 
-//Get all employees
+//Get all employees - http://localhost:27017/api/v1/emp/employees
+
 app.get("/api/v1/emp/employees", async (req, res) => {
   const employees = await EmployeeModel.find({});
 
@@ -16,7 +17,8 @@ app.get("/api/v1/emp/employees", async (req, res) => {
   }
 });
 
-//Create new employee
+//Create new employee :- http://localhost:27017/api/v1/emp/employees
+
 app.post("/api/v1/emp/employees", async (req, res) => {
   const employees = new EmployeeModel(req.body);
 
@@ -30,7 +32,8 @@ app.post("/api/v1/emp/employees", async (req, res) => {
   }
 });
 
-// User can get employee details by employee id
+// User can get employee details by employee id :- http://localhost:27017/api/v1/emp/employees/
+
 app.get("/api/v1/emp/employees/:eid", async (req, res) => {
   try {
     const employee = await EmployeeModel.findById(req.params.eid);
@@ -43,7 +46,8 @@ app.get("/api/v1/emp/employees/:eid", async (req, res) => {
   }
 });
 
-// User can update employee details by employee id
+// User can update employee details by employee id :- http://localhost:27017/api/v1/emp/employees/
+
 app.put("/api/v1/emp/employees/:eid", async (req, res) => {
   try {
     const updateResult = await EmployeeModel.updateOne(
@@ -63,7 +67,8 @@ app.put("/api/v1/emp/employees/:eid", async (req, res) => {
   }
 });
 
-// User can delete employee details by employee id
+// User can delete employee details by employee id :- http://localhost:27017/api/v1/emp/employees/
+
 app.delete("/api/v1/emp/employees/:eid", async (req, res) => {
   try {
     const deleteResult = await EmployeeModel.deleteOne({ _id: req.params.eid });
