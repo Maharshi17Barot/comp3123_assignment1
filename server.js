@@ -7,11 +7,10 @@ const bodyParser = require("body-parser");
 
 // Create an Express application
 const app = express();
-const SERVER_PORT = 27017;
+const SERVER_PORT = 3000;
 
 // Configure middleware to parse JSON and URL-encoded data
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 // Mount the employee and user routers for handling routes
 app.use(employeeRouter);
