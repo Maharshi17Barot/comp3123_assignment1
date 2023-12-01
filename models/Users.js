@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -29,7 +29,6 @@ UserSchema.methods.comparePassword = async function (candidatePassword) {
     throw new Error("Error comparing passwords");
   }
 };
-
 
 UserSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
