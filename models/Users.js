@@ -27,7 +27,7 @@ UserSchema.methods.comparePassword = async function (candidatePassword) {
   } catch (error) {
     return error;
   }
-}
+};
 
 UserSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
