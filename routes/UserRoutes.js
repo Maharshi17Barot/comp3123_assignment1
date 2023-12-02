@@ -1,10 +1,12 @@
 const express = require("express");
+const cros = require("cors");
 const UserModel = require("../models/Users");
 const bodyParser = require("body-parser");
 const app = express();
 const jwt = require("jsonwebtoken");
 const secretKey = "maharshi.barot@gbc.ca";
 
+app.use(cros());
 app.use(bodyParser.json());
 
 // User Signup :- http://localhost:27017/api/v1/users/signup
