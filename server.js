@@ -7,11 +7,16 @@ const bodyParser = require("body-parser");
 
 // Create an Express application
 const app = express();
-const SERVER_PORT = 27017;
+const SERVER_PORT = process.env.PORT || 3000;
+
+process.on("unhandledRejection", (reason, promise) => {
+  console.error("Unhandled Rejection at:", promise, "reason:", reason);
+  // Handle the error appropriately, e.g., close the server gracefully
+  process.exit(1);
+});
 
 // Configure middleware to parse JSON and URL-encoded data
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 // Mount the employee and user routers for handling routes
 app.use(employeeRouter);
@@ -19,6 +24,7 @@ app.use(userRouter);
 
 // MongoDB Atlas connection string
 const DB_CONNECTION_STRING =
+  process.env.DB_CONNECTION_STRING ||
   "mongodb+srv://rootadmin:password1706@cluster0.4ncm9ei.mongodb.net/comp3123_assigment1?retryWrites=true&w=majority";
 
 // Connect to MongoDB Atlas using Mongoose
