@@ -39,6 +39,12 @@ app.post("/api/v1/emp/employees", async (req, res) => {
 app.get("/api/v1/emp/employees/:eid", async (req, res) => {
   try {
     const employee = await EmployeeModel.findById(req.params.eid);
+    if (!employee) {
+      return res.status(404).send({
+        status: false,
+        message: "Employee not found",
+      });
+    }
     res.status(200).send({ get_employee: employee });
   } catch (err) {
     res.status(500).send({
