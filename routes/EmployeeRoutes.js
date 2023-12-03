@@ -1,8 +1,10 @@
 const express = require("express");
+const cros = require("cors");
 const EmployeeModel = require("../models/Employee");
 const bodyParser = require("body-parser");
 const app = express();
 
+app.use(cros());
 app.use(bodyParser.json());
 
 //Get all employees - http://localhost:27017/api/v1/emp/employees
